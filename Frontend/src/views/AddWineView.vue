@@ -29,7 +29,8 @@ export default {
     },
     data() {
         return {
-            showManufacturerView: true
+            showManufacturerView: true,
+            showCompletedDialog: true
         };
     },
     methods: {

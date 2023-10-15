@@ -2,7 +2,8 @@ import axios from "@/axios";
 
 const state = {
     wineList: [],
-    fetchedWineByID: null
+    fetchedWineByID: null,
+    latestAddedWine: null
 };
 
 const mutations = {
@@ -13,7 +14,11 @@ const mutations = {
         state.fetchedWineByID = payload;
     },
     ADD_WINE(state: any, payload: any) {
-        state.wineList.push(payload);
+        const existingWine = state.wineList.find((wine: { id: number; }) => wine.id === payload.id);
+        if (!existingWine) {
+            state.wineList.push(payload);
+        }
+        state.latestAddedWine = payload;
     }
 };
 
@@ -37,7 +42,8 @@ const actions = {
 
 const getters = {
     wineList: (state: { wineList: any; }) => state.wineList,
-    fetchedWine: (state: {fetchedWineByID: any}) => state.fetchedWineByID
+    fetchedWine: (state: {fetchedWineByID: any}) => state.fetchedWineByID,
+    latestWine: (state: {latestAddedWine: any}) => state.latestAddedWine
 }; 
 
 const wineModule = {

@@ -10,7 +10,10 @@ const mutations = {
         state.manufacturersList = payload;
     },
     ADD_TO_LIST(state: any, payload: any) {
-        state.manufacturersList.push(payload);
+        const existingManufacturer = state.manufacturersList.find((manufacturer: { id: number; }) => manufacturer.id === payload.id);
+        if (!existingManufacturer) {
+            state.manufacturersList.push(payload);
+        }
         state.lastestAddedManufacturer = payload;
     }
 };

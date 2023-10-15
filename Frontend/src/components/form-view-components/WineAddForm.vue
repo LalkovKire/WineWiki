@@ -20,7 +20,7 @@
         </div>
         <div class="col-md-6">
             <label for="picture" class="form-label">ImageURL</label>
-            <input type="url" class="form-control" v-model="fields.imgUrl">
+            <input type="url" class="form-control" v-model="fields.imgUrl" placeholder="https://">
             <p v-if="errors.invalidImgUrl" class="text-error">*Please enter a valid url.</p>
         </div>
         <div class="col-md-6">
@@ -74,7 +74,7 @@ export default {
                 this.errors.invalidQuantity = this.fields.quantity <= 0;
                 this.errors.invalidImgUrl = !this.isValidUrl(this.fields.imgUrl);
                 this.errors.invalidDescription = this.fields.description.trim() === "";
-  
+                console.log(this.manufacturerList);
                 if (!this.errors.invalidName && !this.errors.invalidPrice && !this.errors.invalidQuantity && 
                 !this.errors.invalidImgUrl && !this.errors.invalidDescription) {
                     const manufacturer = this.latestManufacturer;
@@ -86,12 +86,20 @@ export default {
                     };
                     store.dispatch("addWine",wine);
                     this.resetFileds();
+                    this.$router.push("/wine/add/dialog");
                 }
         },
         resetFileds() {
             this.fields.name = "";
             this.fields.description = "";
-            this.fields.quantity = 0
+            this.fields.quantity = 0;
+            this.fields.imgUrl = "",
+            this.fields.price = 0;
+            this.errors.invalidName = false;
+            this.errors.invalidPrice = false;
+            this.errors.invalidQuantity = false;
+            this.errors.invalidImgUrl = false;
+            this.errors.invalidDescription = false;
         },
         isValidUrl(url: any) {
             try {

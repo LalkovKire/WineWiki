@@ -4,6 +4,7 @@ import Login from "../views/Login.vue";
 import Wines from "../views/Wines.vue";
 import winePreview from "@/components/wines-view-components/winePreview.vue";
 import AddWineView from "@/views/AddWineView.vue";
+import CompletedDialog from "@/views/CompletedDialog.vue";
 
 const routes = [
    {
@@ -32,6 +33,11 @@ const routes = [
     name: "AddWine",
     component: AddWineView
    },
+   {
+    path: "/wine/add/dialog",
+    name: "CompletedDialog",
+    component: CompletedDialog
+   }
 ];
 
 const router = createRouter({
