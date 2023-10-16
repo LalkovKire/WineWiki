@@ -19,14 +19,19 @@ public class Wine {
 
     private Integer quantity;
 
+    private Double price;
+
+    private String URL;
     @ManyToOne
     private Manufacturer manufacturer;
 
     private String description;
 
-    public Wine(String name, String description,Integer quantity, Manufacturer manufacturer) {
+    public Wine(String name, Integer quantity, Double price, String URL, Manufacturer manufacturer, String description) {
         this.name = name;
         this.quantity = quantity;
+        this.price = price;
+        this.URL = URL;
         this.manufacturer = manufacturer;
         this.description = description;
     }

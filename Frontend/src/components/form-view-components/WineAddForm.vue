@@ -74,15 +74,16 @@ export default {
                 this.errors.invalidQuantity = this.fields.quantity <= 0;
                 this.errors.invalidImgUrl = !this.isValidUrl(this.fields.imgUrl);
                 this.errors.invalidDescription = this.fields.description.trim() === "";
-                console.log(this.manufacturerList);
                 if (!this.errors.invalidName && !this.errors.invalidPrice && !this.errors.invalidQuantity && 
                 !this.errors.invalidImgUrl && !this.errors.invalidDescription) {
                     const manufacturer = this.latestManufacturer;
-                    let wine = {
+                    let wine: object = {
                         name: this.fields.name,
                         quantity: this.fields.quantity,
                         description: this.fields.description,
-                        manufacturer: manufacturer.id
+                        manufacturer: manufacturer.id,
+                        url: this.fields.imgUrl,
+                        price: this.fields.price
                     };
                     store.dispatch("addWine",wine);
                     this.resetFileds();
@@ -101,7 +102,7 @@ export default {
             this.errors.invalidImgUrl = false;
             this.errors.invalidDescription = false;
         },
-        isValidUrl(url: any) {
+        isValidUrl(url: string) {
             try {
                 new URL(url);
                 return true;

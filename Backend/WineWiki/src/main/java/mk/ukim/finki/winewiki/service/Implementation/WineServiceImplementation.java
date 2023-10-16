@@ -50,8 +50,8 @@ public class WineServiceImplementation implements WineService {
         }
         Manufacturer manufacturer = this.manufacturerService.findById(wineDto.getManufacturer())
                 .orElseThrow(() -> new ManufacturerNotFoundException(wineDto.getManufacturer()));
-        return Optional.of(this.wineRepository.save(new Wine(wineDto.getName(),wineDto.getDescription(),
-                wineDto.getQuantity(),manufacturer)));
+        return Optional.of(this.wineRepository.save(new Wine(wineDto.getName(), wineDto.getQuantity(),wineDto.getPrice(),
+                wineDto.getURL(),manufacturer,wineDto.getDescription())));
     }
 
     @Override

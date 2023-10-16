@@ -1,13 +1,13 @@
 <template>
   <div class="container custom-div d-flex flex-column float-start">
       <div class="w-100 d-flex bg-light justify-content-center align-items-center custom-top">
-         <div class="custom-img">
+         <div class="custom-img" :style="{ backgroundImage: 'url(' + wine.url + ')' }">
          </div>
       </div>
       <div class="w-100 bg-light p-2 custom-bottom">
         <h5>{{ wine.name }}</h5><br>
         <div class="d-flex w-100 justify-content-around align-content-center">
-          <p>Price:&nbsp 0.0$</p>
+          <p>Price:&nbsp ${{ wine.price }}</p>
           <span class=" w-50 h-100"></span>
         </div> 
         <div class="d-flex w-100 justify-content-around align-content-center">
@@ -43,7 +43,6 @@ export default {
      border-radius: 100%;
      width: 50%;
      height: 70%;
-     background-image: url("https://images.ctfassets.net/6jpeaipefazr/1CVNQzcDoA2EAcGQkKkcSS/1ea6c30515972dded5f890356d1eda8e/villa-annaberta-amarone-della-valpolicella-761359.png?fm=avif&q=65&w=400&h=400&fit=pad");
      background-size: cover;
      background-repeat: round;
      transition: transform 0.7s ease-in-out;
@@ -59,8 +58,10 @@ export default {
    }
 
    p{
+    margin-left: 15px;
     text-align: left;
     font-size: 0.9em;
+    width: 45%;
     font-family: 'Poppins', sans-serif;
    }
    .custom-top {

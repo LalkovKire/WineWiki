@@ -13,13 +13,19 @@ public class WineDto {
 
     private Long manufacturer;
 
+    private String URL;
+
+    private Double price;
+
     public WineDto() {
     }
 
-    public WineDto(String name, Integer quantity, String description, Long manufacturer) {
+    public WineDto(String name, Integer quantity, String description, Long manufacturer, String URL, Double price) {
         this.name = name;
         this.quantity = quantity;
         this.description = description;
         this.manufacturer = manufacturer;
+        this.URL = URL;
+        this.price = price;
     }
 }

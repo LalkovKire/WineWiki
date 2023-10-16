@@ -4,7 +4,7 @@
         <Header></Header>
         <Whitespace />
         <div v-if="fetchedWine" class="w-100 d-flex justify-content-center align-items-center flex-column custom-section">
-            <img src="https://images.ctfassets.net/6jpeaipefazr/1CVNQzcDoA2EAcGQkKkcSS/1ea6c30515972dded5f890356d1eda8e/villa-annaberta-amarone-della-valpolicella-761359.png?fm=avif&q=65&w=400&h=400&fit=pad"
+            <img :src="fetchedWine.url"
              class="custom-img"> <br><br>
             <h4>{{ fetchedWine.name }}</h4>
             <Whitespace />
@@ -12,7 +12,7 @@
               <h6>Description: &nbsp&nbsp&nbsp</h6><p>{{ fetchedWine.description }}</p>
               <div class="d-flex"><h6>Manufacturer:&nbsp&nbsp&nbsp</h6><p class="custom-txt">{{ fetchedWine.manufacturer.name }}</p></div>
               <div class="d-flex"><h6>Country:&nbsp&nbsp&nbsp</h6><p class="custom-txt">{{ fetchedWine.manufacturer.country }}</p></div>
-              <div class="d-flex"><h6>Price:&nbsp&nbsp&nbsp</h6><p class="custom-txt">$0.00</p></div>
+              <div class="d-flex"><h6>Price:&nbsp&nbsp&nbsp</h6><p class="custom-txt">${{ fetchedWine.price}}</p></div>
               <div class="d-flex"><h6>Quantity:&nbsp&nbsp&nbsp</h6><p class="custom-txt">{{ fetchedWine.quantity }}</p></div>
               <div class="d-flex w-100">
                    <button class="button button-one">Add to cart</button>
@@ -46,6 +46,7 @@ export default {
     },
     created() {
        store.dispatch('getWineByID', this.$route.params.id);
+       console.log(this.fetchedWine);
     },
     computed: {
        ...mapGetters([
@@ -65,8 +66,8 @@ export default {
         --bs-gutter-x: 0;
     }
     .custom-img {
-        width: 200px;
-        height: 200px;
+        max-width: 220px;
+        max-height: 300px;
     }
 
     h4 {
